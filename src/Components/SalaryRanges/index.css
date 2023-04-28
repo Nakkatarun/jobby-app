@@ -1,0 +1,15 @@
+.salary-type-container {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  align-items: center;
+  margin-left: 0px;
+}
+.label-text {
+  color: #ffffff;
+  font-size: 10px;
+  font-family: 'roboto';
+  font-weight: 400;
+  margin-top: 10px;
+  margin-left: 4px;
+}

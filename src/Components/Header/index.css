@@ -1,0 +1,33 @@
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 9vh;
+  background-color: #272727;
+  background-size: cover;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.header-logo {
+  height: 50px;
+  width: 120px;
+}
+.header-options-container {
+  display: flex;
+  flex-direction: row;
+}
+.list-type {
+  list-style-type: none;
+}
+.icons {
+  color: #ffffff;
+  height: 30px;
+  width: 30px;
+  margin-left: 28px;
+}
+.log-out-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
