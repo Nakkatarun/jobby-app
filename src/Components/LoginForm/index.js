@@ -58,11 +58,12 @@ class LoginForm extends Component {
             className="website-logo"
           />
           <form className="form-container" onSubmit={this.onSubmitForm}>
-            <label htmlFor="text" className="label-text">
+            <label htmlFor="username" className="label-text">
               USERNAME
             </label>
             <input
               type="text"
+              id="username"
               placeholder="Username"
               className="input-element"
               value={username}
@@ -73,6 +74,7 @@ class LoginForm extends Component {
             </label>
             <input
               type="password"
+              id="password"
               placeholder="Password"
               className="input-element"
               value={password}

@@ -114,16 +114,52 @@ class Jobs extends Component {
     this.setState({inputValue: event.target.value})
   }
 
-  onClickSearchButton = () => this.getJobsList
+  onClickSearchButton = () => {
+    const {jobDetailsList, inputValue} = this.state
+    const filteredJobs = jobDetailsList.filter(eachJob =>
+      eachJob.title.toLowerCase().includes(inputValue.toLowerCase()),
+    )
+
+    this.setState({jobDetailsList: filteredJobs})
+  }
+
+  renderNoJobsView = () => (
+    <div className="no-job-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+        alt="no jobs"
+        className="no-jobs"
+      />
+      <h1 className="no-jobs-heading">No Jobs Found</h1>
+      <p className="no-jobs-description">
+        We could not find any jobs. Try other filters
+      </p>
+    </div>
+  )
+
+  jobDetailsRender = () => {
+    const {jobDetailsList, apiStatus} = this.state
+    return (
+      <>
+        {jobDetailsList.map(eachJobDetails => (
+          <JobCard
+            eachJobDetails={eachJobDetails}
+            key={eachJobDetails.id}
+            apiStatus={apiStatus}
+          />
+        ))}
+      </>
+    )
+  }
 
   render() {
     const {
       activeEmploymentId,
       activeSalaryId,
       jobDetailsList,
-      apiStatus,
       inputValue,
     } = this.state
+    const condition = jobDetailsList.length !== 0
     return (
       <>
         <Header />
@@ -148,36 +184,26 @@ class Jobs extends Component {
           <Profile />
           <hr className="line" />
           <h1 className="category-text">Type of Employment</h1>
-          <ul>
-            {employmentTypesList.map(eachType => (
-              <EmploymentType
-                eachType={eachType}
-                activeEmploymentId={activeEmploymentId}
-                key={eachType.employmentTypeId}
-                updatedEmploymentType={this.updatedEmploymentType}
-              />
-            ))}
-          </ul>
-          <hr className="line" />
-          <h1 className="category-text">Salary Range</h1>
-          <ul>
-            {salaryRangesList.map(eachSalary => (
-              <SalaryRanges
-                activeSalaryId={activeSalaryId}
-                eachSalary={eachSalary}
-                key={eachSalary.salaryRangeId}
-                updatedSalaryRange={this.updatedSalaryRange}
-              />
-            ))}
-          </ul>
-          <hr className="line" />
-          {jobDetailsList.map(eachJobDetails => (
-            <JobCard
-              eachJobDetails={eachJobDetails}
-              key={eachJobDetails.id}
-              apiStatus={apiStatus}
+          {employmentTypesList.map(eachType => (
+            <EmploymentType
+              eachType={eachType}
+              activeEmploymentId={activeEmploymentId}
+              key={eachType.employmentTypeId}
+              updatedEmploymentType={this.updatedEmploymentType}
             />
           ))}
+          <hr className="line" />
+          <h1 className="category-text">Salary Range</h1>
+          {salaryRangesList.map(eachSalary => (
+            <SalaryRanges
+              activeSalaryId={activeSalaryId}
+              eachSalary={eachSalary}
+              key={eachSalary.salaryRangeId}
+              updatedSalaryRange={this.updatedSalaryRange}
+            />
+          ))}
+          <hr className="line" />
+          {condition ? this.jobDetailsRender() : this.renderNoJobsView()}
         </div>
       </>
     )

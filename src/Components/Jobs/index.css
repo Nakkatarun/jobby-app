@@ -46,3 +46,26 @@
   font-family: 'Roboto';
   font-weight: 800;
 }
+.no-job-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-jobs {
+  height: 400px;
+  width: 400px;
+}
+
+.no-jobs-heading {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 20px;
+  font-family: 'Roboto';
+}
+.no-jobs-description {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Roboto';
+}

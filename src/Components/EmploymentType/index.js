@@ -10,7 +10,12 @@ const EmploymentType = props => {
 
   return (
     <li className="employment-type-container">
-      <input type="checkbox" value={label} onClick={onChangeEmploymentType} />
+      <input
+        id="checkbox"
+        type="checkbox"
+        value={label}
+        onClick={onChangeEmploymentType}
+      />
       <label htmlFor="checkbox" className="label-text">
         {label}
       </label>

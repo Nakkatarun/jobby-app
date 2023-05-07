@@ -25,7 +25,7 @@ const Header = props => {
       <ul className="header-options-container">
         <Link to="/">
           <li className="list-type">
-            <AiFillHome className="icons" />{' '}
+            <AiFillHome className="icons" />
           </li>
         </Link>
         <Link to="/jobs">
